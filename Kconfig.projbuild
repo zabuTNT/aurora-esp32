@@ -1,0 +1,20 @@
+menu "Aurora-Go ESP32 Configuration"
+
+config WIFI_SSID
+    string "Wi-Fi SSID"
+    default "MyHomeWiFi"
+
+config WIFI_PASSWORD
+    string "Wi-Fi Password"
+    default "SuperSecret123"
+
+config INVERTER_IP
+    string "Inverter IP"
+    default "192.168.0.190"
+
+config INVERTER_PORT
+    int "Inverter TCP port"
+    range 1 65535
+    default 1470
+
+endmenu

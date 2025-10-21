@@ -1,6 +1,6 @@
-# aurora-go-esp32 (ESP-IDF)
+# aurora-esp32 (ESP-IDF)
 
-Complete ESP32 port of aurora-go with HTTP endpoints, robust TCP querying, and full Aurora inverter data parsing.
+Complete ESP32 port of [aurora-go](https://github.com/zabuTNT/aurora-go) with HTTP endpoints, robust TCP querying, and full Aurora inverter data parsing.
 
 ## Requirements
 - ESP-IDF v5.x installed and exported (`. $IDF_PATH/export.sh`)
@@ -136,7 +136,7 @@ Queries all standard Aurora inverter registers:
 
 ## Comparison with Go Version
 
-This ESP32 port provides the same functionality as the Go version:
+This ESP32 port provides the same functionality as the [Go version](https://github.com/zabuTNT/aurora-go):
 - ✅ All HTTP endpoints (`/`, `/json/`, `/xml/`, `/health/`)
 - ✅ Complete Aurora protocol parsing
 - ✅ Robust TCP with retry/backoff

@@ -372,6 +372,7 @@ static esp_err_t xml_get_handler(httpd_req_t *req) {
 
 esp_err_t http_start_server(void) {
     httpd_config_t config = HTTPD_DEFAULT_CONFIG();
+    config.server_port = CONFIG_HTTP_SERVER_PORT;
     httpd_handle_t server = NULL;
     if (httpd_start(&server, &config) != ESP_OK) {
         return ESP_FAIL;

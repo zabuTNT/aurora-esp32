@@ -1,4 +1,4 @@
-menu "Aurora-Go ESP32 Configuration"
+menu "Aurora ESP32 Configuration"
 
 config WIFI_SSID
     string "Wi-Fi SSID"
@@ -16,5 +16,10 @@ config INVERTER_PORT
     int "Inverter TCP port"
     range 1 65535
     default 1470
+
+config HTTP_SERVER_PORT
+    int "HTTP Server port"
+    range 1 65535
+    default 8100
 
 endmenu

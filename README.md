@@ -14,10 +14,11 @@ Use menuconfig to set Wi‑Fi credentials and inverter address:
 idf.py menuconfig
 ```
 
-Under "Aurora-Go ESP32 Configuration" set:
+Under "Aurora ESP32 Configuration" set:
 - Wi‑Fi SSID / Password
 - Inverter IP (default `192.168.0.190`)
 - Inverter TCP port (default `1470`)
+- HTTP Server port (default `8100`)
 
 ## Build & Flash
 ```bash
@@ -25,6 +26,21 @@ idf.py set-target esp32
 idf.py build
 idf.py -p /dev/ttyUSB0 flash monitor
 ```
+
+## HTTP Server Configuration
+
+The HTTP server runs on a configurable port (default `8100`). You can change this via menuconfig:
+
+```bash
+idf.py menuconfig
+# Navigate to: Aurora ESP32 Configuration → HTTP Server port
+```
+
+**Access URLs:**
+- `http://<esp32-ip>:8100/` - Plain text summary
+- `http://<esp32-ip>:8100/json/` - JSON data
+- `http://<esp32-ip>:8100/xml/` - XML data
+- `http://<esp32-ip>:8100/health/` - Health check
 
 ## HTTP Endpoints
 
@@ -123,6 +139,7 @@ Queries all standard Aurora inverter registers:
 - Check network connectivity: `ping <inverter-ip>`
 - Ensure inverter TCP interface is enabled
 - Check firewall rules
+- Verify HTTP server port is accessible: `curl http://<esp32-ip>:8100/health/`
 
 ### Nighttime Behavior
 - Inverter standby is normal - endpoints will return `ERROR`
@@ -133,6 +150,7 @@ Queries all standard Aurora inverter registers:
 - Monitor serial output for connection attempts
 - Use `/health/` endpoint for quick connectivity test
 - Check Wi‑Fi connection status in logs
+- Test HTTP server: `curl http://<esp32-ip>:8100/health/`
 
 ## Comparison with Go Version
 
@@ -148,4 +166,4 @@ This ESP32 port provides the same functionality as the [Go version](https://gith
 - Lower power consumption
 - Standalone operation (no PC required)
 - Built-in Wi‑Fi connectivity
-- Configurable via menuconfig
+- Configurable via menuconfig (Wi‑Fi, inverter settings, HTTP port)
